@@ -1,0 +1,10 @@
+# This file is used to configure your Cloudflare Pages project.
+# For more information, see: https://developers.cloudflare.com/pages/functions/wrangler-configuration/
+
+name = "vertexora-solutions"
+compatibility_date = "2024-05-02"
+compatibility_flags = ["nodejs_compat"]
+
+[vars]
+# Add your environment variables here
+# NEXT_PUBLIC_API_URL = "https://api.example.com"

@@ -1,0 +1,6 @@
+{
+  "name": "Vertexora Solutions",
+  "description": "Vertexora Solutions builds websites, web apps, mobile apps, backend systems, and automation solutions that help businesses scale faster.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
