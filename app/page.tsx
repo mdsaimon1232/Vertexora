@@ -203,15 +203,15 @@ export default function Home() {
             </div>
           </FlowSection>
 
-          {/* SERVICES & CAPABILITIES - White/Light Mode Style */}
-          <FlowSection style={{ backgroundColor: '#ffffff', color: '#000' }}>
+          {/* SERVICES & CAPABILITIES - Orange Style from try.txt */}
+          <FlowSection style={{ backgroundColor: '#fd5200', color: '#fff' }}>
             {/* TRUSTED BY MARQUEE */}
             <section className="py-12 border-y border-black/[0.05] bg-black/[0.01] overflow-hidden relative">
               <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-white to-transparent z-10" />
               <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-white to-transparent z-10" />
               
               <div className="container mx-auto px-6 mb-8 relative z-20">
-                <p className="text-center text-xs font-semibold text-gray-500 uppercase tracking-[0.2em]">Trusted by innovative companies worldwide</p>
+                <p className="text-center text-xs font-semibold text-white/70 uppercase tracking-[0.2em]">Trusted by innovative companies worldwide</p>
               </div>
               
               <div className="flex w-full relative opacity-50">
@@ -222,13 +222,14 @@ export default function Home() {
                 >
                   {[...Array(2)].map((_, i) => (
                     <div key={i} className="flex gap-20 items-center">
-                      <span className="text-3xl font-[family-name:var(--font-display)] font-bold text-gray-400">NEXUS</span>
-                      <span className="text-3xl font-[family-name:var(--font-display)] font-bold text-gray-400">Aurora.</span>
-                      <span className="text-3xl font-[family-name:var(--font-display)] font-bold text-gray-400">Quantum</span>
-                      <span className="text-3xl font-[family-name:var(--font-display)] font-bold text-gray-400">Vanguard</span>
-                      <span className="text-3xl font-[family-name:var(--font-display)] font-bold text-gray-400">STELAR</span>
-                      <span className="text-3xl font-[family-name:var(--font-display)] font-bold text-gray-400">Pinnacle</span>
+                      <span className="text-3xl font-[family-name:var(--font-display)] font-bold text-white/40">NEXUS</span>
+                      <span className="text-3xl font-[family-name:var(--font-display)] font-bold text-white/40">Aurora.</span>
+                      <span className="text-3xl font-[family-name:var(--font-display)] font-bold text-white/40">Quantum</span>
+                      <span className="text-3xl font-[family-name:var(--font-display)] font-bold text-white/40">Vanguard</span>
+                      <span className="text-3xl font-[family-name:var(--font-display)] font-bold text-white/40">STELAR</span>
+                      <span className="text-3xl font-[family-name:var(--font-display)] font-bold text-white/40">Pinnacle</span>
                     </div>
+
                   ))}
                 </motion.div>
               </div>
@@ -237,8 +238,8 @@ export default function Home() {
             <section id="services" className="py-24 sm:py-32 relative">
               <div className="container mx-auto px-6 max-w-7xl">
                 <div className="text-center mb-16 md:mb-24">
-                  <h2 className="text-4xl md:text-5xl font-[family-name:var(--font-display)] font-bold tracking-tight mb-6">Our Capabilities</h2>
-                  <p className="text-gray-600 max-w-2xl mx-auto text-lg">We deliver end-to-end engineering excellence across the entire modern tech stack.</p>
+                  <h2 className="text-4xl md:text-5xl font-[family-name:var(--font-display)] font-bold tracking-tight mb-6 text-white">Our Capabilities</h2>
+                  <p className="text-white/80 max-w-2xl mx-auto text-lg">We deliver end-to-end engineering excellence across the entire modern tech stack.</p>
                 </div>
                 
                 <div className="relative">
