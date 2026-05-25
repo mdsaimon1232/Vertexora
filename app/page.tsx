@@ -9,7 +9,7 @@ import {
   ChevronDown, Globe
 } from "lucide-react";
 import Image from "next/image";
-import { PrismaHero } from "@/components/ui/prisma-hero";
+import { Hero } from "@/components/hero";
 
 // Counter component for stats
 function Counter({ value, suffix = "" }: { value: number, suffix?: string }) {
@@ -125,7 +125,7 @@ export default function Home() {
       <main>
         {/* HERO SECTION */}
         <div id="home">
-          <PrismaHero />
+          <Hero />
         </div>
 
         {/* TRUSTED BY MARQUEE */}
@@ -203,7 +203,7 @@ export default function Home() {
             <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
               <div>
                 <h2 className="text-4xl md:text-5xl font-[family-name:var(--font-display)] font-bold tracking-tight mb-4">Selected Work</h2>
-                <p className="text-gray-400 text-lg max-w-md">Explore how we've helped category-leading companies build exceptional digital experiences.</p>
+                <p className="text-gray-400 text-lg max-w-md">Explore how we&apos;ve helped category-leading companies build exceptional digital experiences.</p>
               </div>
               <a href="#contact" className="group flex items-center gap-2 text-[#00E5FF] font-semibold hover:text-white transition-colors cursor-pointer">
                 View All Projects <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
@@ -352,7 +352,7 @@ export default function Home() {
                       <path d="M14.017 18L14.017 10.609C14.017 4.905 17.748 1.039 23 0L23.995 2.151C21.563 3.068 20 5.789 20 8H24V18H14.017ZM0 18V10.609C0 4.905 3.748 1.038 9 0L9.996 2.151C7.563 3.068 6 5.789 6 8H9.983L9.983 18L0 18Z" />
                     </svg>
                   </div>
-                  <p className="text-gray-300 mb-8 leading-relaxed font-light">"{test.text}"</p>
+                  <p className="text-gray-300 mb-8 leading-relaxed font-light">&quot;{test.text}&quot;</p>
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 rounded-full bg-gradient-to-br from-gray-700 to-gray-900 overflow-hidden relative border border-white/10 shrink-0">
                       <Image src={`https://picsum.photos/seed/user${idx+5}/100/100`} fill className="object-cover" alt={test.name} unoptimized />
@@ -421,7 +421,7 @@ export default function Home() {
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 relative z-10">
                 <div>
                   <h2 className="text-4xl md:text-6xl font-[family-name:var(--font-display)] font-bold tracking-tight mb-6 leading-tight">
-                    Let's Build Something <br className="hidden md:block"/><span className="text-gradient">Extraordinary.</span>
+                    Let&apos;s Build Something <br className="hidden md:block"/><span className="text-gradient">Extraordinary.</span>
                   </h2>
                   <p className="text-gray-400 text-lg mb-12 font-light max-w-md">
                     Ready to transform your digital presence? Fill out the form or reach out directly to speak with an engineer.
