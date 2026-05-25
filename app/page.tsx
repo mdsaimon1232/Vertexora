@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import { Hero } from "@/components/hero";
+import { ProjectSection } from "@/components/project-section";
 
 // Counter component for stats
 function Counter({ value, suffix = "" }: { value: number, suffix?: string }) {
@@ -196,81 +197,7 @@ export default function Home() {
         </section>
 
         {/* WORK / PORTFOLIO SECTION */}
-        <section id="work" className="py-24 relative overflow-hidden">
-          <div className="absolute top-1/2 right-0 w-[500px] h-[500px] bg-[#7C3AED]/10 rounded-full blur-[150px] mix-blend-screen pointer-events-none" />
-          
-          <div className="container mx-auto px-6 max-w-7xl relative z-10">
-            <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
-              <div>
-                <h2 className="text-4xl md:text-5xl font-[family-name:var(--font-display)] font-bold tracking-tight mb-4">Selected Work</h2>
-                <p className="text-gray-400 text-lg max-w-md">Explore how we&apos;ve helped category-leading companies build exceptional digital experiences.</p>
-              </div>
-              <a href="#contact" className="group flex items-center gap-2 text-[#00E5FF] font-semibold hover:text-white transition-colors cursor-pointer">
-                View All Projects <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-              </a>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-              {[
-                { 
-                  title: "FinTech Analytics Dashboard", 
-                  category: "Web Application", 
-                  image: "https://picsum.photos/seed/fin3/1000/800",
-                  tags: ["Next.js", "PostgreSQL", "Tailwind"]
-                },
-                { 
-                  title: "Aura Health & Fitness Tracker", 
-                  category: "Mobile Application", 
-                  image: "https://picsum.photos/seed/health4/1000/800",
-                  tags: ["React Native", "Node.js", "Firebase"]
-                },
-                { 
-                  title: "Nexus E-Commerce Platform", 
-                  category: "Enterprise Website", 
-                  image: "https://picsum.photos/seed/ecomm9/1000/800",
-                  tags: ["Shopify Plus", "React", "GraphQL"]
-                },
-                { 
-                  title: "Automated Supply Chain SaaS", 
-                  category: "SaaS Platform", 
-                  image: "https://picsum.photos/seed/saas3/1000/800",
-                  tags: ["Vue", "Django", "AWS"]
-                }
-              ].map((project, idx) => (
-                <motion.div 
-                  key={idx}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ duration: 0.6, delay: idx * 0.1 }}
-                  className="group cursor-pointer"
-                >
-                  <div className="relative overflow-hidden rounded-3xl aspect-[4/3] mb-6 border border-white/5 bg-white/5">
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10 opacity-60 group-hover:opacity-40 transition-opacity" />
-                    <Image 
-                      src={project.image} 
-                      alt={project.title} 
-                      fill 
-                      className="object-cover transition-transform duration-700 group-hover:scale-105" 
-                      unoptimized
-                    />
-                    <div className="absolute bottom-6 left-6 z-20 flex gap-2 flex-wrap pr-6">
-                      {project.tags.map(tag => (
-                        <span key={tag} className="px-3 py-1 rounded-full bg-black/50 backdrop-blur-md border border-white/10 text-xs font-medium tracking-wide">
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                  <div>
-                    <h3 className="text-2xl font-bold font-[family-name:var(--font-display)] mb-1 group-hover:text-[#00E5FF] transition-colors">{project.title}</h3>
-                    <p className="text-gray-400">{project.category}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
+        <ProjectSection />
 
         {/* STATS SECTION */}
         <section className="py-20 border-y border-white/[0.05] bg-[#0A0A0A]">

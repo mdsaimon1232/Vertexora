@@ -31,6 +31,9 @@ body {
   .glass-panel {
     @apply bg-white/[0.03] backdrop-blur-xl border border-white/[0.05];
   }
+  .glass {
+    @apply bg-white/[0.03] backdrop-blur-xl border border-white/[0.05];
+  }
 }
 
 @keyframes blob {
