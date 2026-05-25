@@ -1,25 +1,82 @@
 "use client";
 import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 
 export function Hero() {
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center px-4 relative">
-      <motion.h1
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="text-7xl md:text-9xl font-bold tracking-tighter text-center bg-gradient-to-b from-foreground to-foreground/50 bg-clip-text text-transparent"
-      >
-        Vertexora <br /> Solutions
-      </motion.h1>
-      <motion.p
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.5, duration: 0.8 }}
-        className="mt-6 text-xl text-foreground/60 max-w-lg text-center font-medium"
-      >
-        Building the future with agentic intelligence and elite design.
-      </motion.p>
+    <section className="min-h-screen flex flex-col items-center justify-center px-4 relative overflow-hidden">
+      {/* Background video */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 h-full w-full object-cover -z-20 transition-transform duration-[10s]"
+        src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260405_170732_8a9ccda6-5cff-4628-b164-059c500a2b41.mp4"
+      />
+
+      {/* Noise overlay */}
+      <div className="noise-overlay pointer-events-none absolute inset-0 opacity-[0.25] mix-blend-overlay -z-10" />
+
+      {/* Gradient overlay */}
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/20 via-black/10 to-background/90 -z-10" />
+
+      <div className="z-10 flex flex-col items-center">
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-7xl md:text-9xl font-bold tracking-tighter text-center bg-gradient-to-b from-foreground to-foreground/50 bg-clip-text text-transparent"
+        >
+          Vertexora <br /> Solutions
+        </motion.h1>
+        
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3, duration: 0.8 }}
+          className="mt-6 text-xl md:text-2xl text-foreground/80 max-w-2xl text-center font-medium drop-shadow-lg"
+        >
+          Building the future with agentic intelligence and elite design.
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6, duration: 0.8 }}
+          className="mt-10 flex flex-col md:flex-row items-center gap-6"
+        >
+          <a
+            href="#contact"
+            className="group flex items-center gap-4 rounded-full bg-foreground py-2 pl-8 pr-2 text-sm font-semibold text-background hover:scale-105 transition-all shadow-[0_0_30px_rgba(255,255,255,0.1)]"
+          >
+            <span className="uppercase tracking-widest">Start Project</span>
+            <span className="flex h-12 w-12 items-center justify-center rounded-full bg-background transition-transform group-hover:rotate-[-45deg]">
+              <ArrowRight className="h-5 w-5 text-foreground" />
+            </span>
+          </a>
+        </motion.div>
+      </div>
+
+      {/* Bottom info bar */}
+      <div className="absolute bottom-10 left-0 right-0 px-10 hidden md:flex justify-between items-end z-10">
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.8 }}
+          className="text-sm font-light tracking-widest uppercase opacity-50"
+        >
+          Based in Silicon Valley & Remote
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.8 }}
+          className="max-w-xs text-right text-xs uppercase tracking-tighter opacity-50 leading-relaxed"
+        >
+          Scalable digital products & intelligent automation engineered for modern growth.
+        </motion.div>
+      </div>
     </section>
   );
 }
