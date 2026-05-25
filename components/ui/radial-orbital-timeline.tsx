@@ -227,10 +227,10 @@ export default function RadialOrbitalTimeline({
                   w-12 h-12 rounded-full flex items-center justify-center
                   ${
                     isExpanded
-                      ? "bg-white text-orange-600 shadow-[0_0_30px_rgba(255,255,255,0.8)]"
+                      ? "bg-white text-orange-600 shadow-xl"
                       : isRelated
-                      ? "bg-white/80 text-orange-600"
-                      : "bg-white/10 text-white backdrop-blur-md"
+                      ? "bg-white text-orange-600"
+                      : "bg-white/90 text-orange-600"
                   }
                   border-2 
                   ${
@@ -238,7 +238,7 @@ export default function RadialOrbitalTimeline({
                       ? "border-white"
                       : isRelated
                       ? "border-white animate-orbital-pulse"
-                      : "border-white/40"
+                      : "border-white/20"
                   }
                   transition-all duration-300 transform hover:scale-110
                   ${isExpanded ? "scale-150" : ""}
@@ -252,17 +252,17 @@ export default function RadialOrbitalTimeline({
                   absolute top-14 left-1/2 -translate-x-1/2 whitespace-nowrap
                   text-[10px] font-bold tracking-[0.2em] uppercase
                   transition-all duration-300
-                  ${isExpanded ? "text-white scale-110" : "text-white/60"}
+                  ${isExpanded ? "text-white scale-110" : "text-white"}
                 `}
                 >
                   {item.title}
                 </div>
 
                 {isExpanded && (
-                  <Card className="absolute top-24 left-1/2 -translate-x-1/2 w-72 bg-white/15 backdrop-blur-2xl border border-white/30 shadow-2xl shadow-black/20 overflow-visible">
-                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-px h-3 bg-white/50"></div>
-                    {/* Mac-style Window Header for Consistency */}
-                    <div className="flex items-center gap-1.5 px-4 pt-3 pb-1 border-b border-white/10">
+                  <Card className="absolute top-24 left-1/2 -translate-x-1/2 w-72 bg-white border-none shadow-2xl shadow-black/40 overflow-visible">
+                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-px h-3 bg-white"></div>
+                    {/* Mac-style Window Header */}
+                    <div className="flex items-center gap-1.5 px-4 pt-3 pb-1 border-b border-gray-100 bg-gray-50 rounded-t-lg">
                       <div className="w-2.5 h-2.5 rounded-full bg-[#ff5f56]"></div>
                       <div className="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]"></div>
                       <div className="w-2.5 h-2.5 rounded-full bg-[#27c93f]"></div>
@@ -280,38 +280,38 @@ export default function RadialOrbitalTimeline({
                             ? "IN PROGRESS"
                             : "PENDING"}
                         </Badge>
-                        <span className="text-[10px] font-mono text-white/50 uppercase tracking-widest">
+                        <span className="text-[10px] font-mono text-gray-400 uppercase tracking-widest">
                           {item.date}
                         </span>
                       </div>
-                      <CardTitle className="text-lg mt-2 text-white font-bold">
+                      <CardTitle className="text-lg mt-2 text-gray-900 font-bold">
                         {item.title}
                       </CardTitle>
                     </CardHeader>
-                    <CardContent className="text-xs text-white/90 leading-relaxed">
+                    <CardContent className="text-xs text-gray-600 leading-relaxed">
                       <p className="mb-4">{item.content}</p>
 
-                      <div className="pt-3 border-t border-white/10">
+                      <div className="pt-3 border-t border-gray-100">
                         <div className="flex justify-between items-center text-[10px] mb-1.5 uppercase tracking-tighter">
-                          <span className="flex items-center font-medium">
-                            <Zap size={10} className="mr-1 text-cyan-300" />
+                          <span className="flex items-center font-medium text-gray-500">
+                            <Zap size={10} className="mr-1 text-orange-500" />
                             Intensity Level
                           </span>
-                          <span className="font-mono text-cyan-300">{item.energy}%</span>
+                          <span className="font-mono text-orange-600">{item.energy}%</span>
                         </div>
-                        <div className="w-full h-1 bg-white/10 rounded-full overflow-hidden">
+                        <div className="w-full h-1 bg-gray-100 rounded-full overflow-hidden">
                           <div
-                            className="h-full bg-gradient-to-r from-cyan-400 to-blue-500 shadow-[0_0_10px_rgba(34,211,238,0.5)]"
+                            className="h-full bg-gradient-to-r from-orange-400 to-red-500"
                             style={{ width: `${item.energy}%` }}
                           ></div>
                         </div>
                       </div>
 
                       {item.relatedIds.length > 0 && (
-                        <div className="mt-4 pt-3 border-t border-white/10">
+                        <div className="mt-4 pt-3 border-t border-gray-100">
                           <div className="flex items-center mb-2">
-                            <Link size={10} className="text-white/70 mr-1" />
-                            <h4 className="text-[9px] uppercase tracking-[0.2em] font-bold text-white/50">
+                            <Link size={10} className="text-gray-400 mr-1" />
+                            <h4 className="text-[9px] uppercase tracking-[0.2em] font-bold text-gray-400">
                               Linked Domains
                             </h4>
                           </div>
@@ -325,7 +325,7 @@ export default function RadialOrbitalTimeline({
                                   key={relatedId}
                                   variant="outline"
                                   size="sm"
-                                  className="flex items-center h-7 px-3 py-0 text-[10px] rounded-full border-white/20 bg-white/5 hover:bg-white/20 text-white transition-all"
+                                  className="flex items-center h-7 px-3 py-0 text-[10px] rounded-full border-gray-200 bg-white hover:bg-gray-50 text-gray-700 transition-all shadow-sm"
                                   onClick={(e) => {
                                     e.stopPropagation();
                                     toggleItem(relatedId);
