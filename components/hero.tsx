@@ -1,25 +1,37 @@
 "use client";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { useEffect, useRef } from "react";
 
 export function Hero() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.play().catch((error) => {
+        console.error("Video autoplay failed:", error);
+      });
+    }
+  }, []);
+
   return (
     <section className="min-h-screen flex flex-col items-center justify-center px-4 relative overflow-hidden">
       {/* Background video */}
       <video
+        ref={videoRef}
         autoPlay
         loop
         muted
         playsInline
-        className="absolute inset-0 h-full w-full object-cover -z-20 transition-transform duration-[10s]"
+        className="absolute inset-0 h-full w-full object-cover -z-30 transition-transform duration-[10s]"
         src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260405_170732_8a9ccda6-5cff-4628-b164-059c500a2b41.mp4"
       />
 
       {/* Noise overlay */}
-      <div className="noise-overlay pointer-events-none absolute inset-0 opacity-[0.25] mix-blend-overlay -z-10" />
+      <div className="noise-overlay pointer-events-none absolute inset-0 opacity-[0.25] mix-blend-overlay -z-20" />
 
       {/* Gradient overlay */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/20 via-black/10 to-background/90 -z-10" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/20 via-black/10 to-background/90 -z-20" />
 
       <div className="z-10 flex flex-col items-center">
         <motion.h1
