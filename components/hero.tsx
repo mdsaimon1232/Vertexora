@@ -23,15 +23,15 @@ export function Hero() {
         loop
         muted
         playsInline
-        className="absolute inset-0 h-full w-full object-cover -z-30 transition-transform duration-[10s]"
+        className="absolute inset-0 h-full w-full object-cover -z-40 transition-transform duration-[10s]"
         src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260405_170732_8a9ccda6-5cff-4628-b164-059c500a2b41.mp4"
       />
 
       {/* Noise overlay */}
-      <div className="noise-overlay pointer-events-none absolute inset-0 opacity-[0.25] mix-blend-overlay -z-20" />
+      <div className="noise-overlay pointer-events-none absolute inset-0 opacity-[0.15] mix-blend-overlay -z-30" />
 
-      {/* Gradient overlay */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/20 via-black/10 to-background/90 -z-20" />
+      {/* Gradient overlay - much more subtle to keep video clear */}
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-background/40 -z-20" />
 
       <div className="z-10 flex flex-col items-center">
         <motion.h1
@@ -60,11 +60,11 @@ export function Hero() {
         >
           <a
             href="#contact"
-            className="group flex items-center gap-4 rounded-full bg-foreground py-2 pl-8 pr-2 text-sm font-semibold text-background hover:scale-105 transition-all shadow-[0_0_30px_rgba(255,255,255,0.1)]"
+            className="group flex items-center gap-4 rounded-full bg-blue-600 dark:bg-foreground py-2 pl-8 pr-2 text-sm font-semibold text-white dark:text-background hover:scale-105 transition-all shadow-[0_0_30px_rgba(59,130,246,0.3)] dark:shadow-[0_0_30px_rgba(255,255,255,0.1)]"
           >
             <span className="uppercase tracking-widest">Start Project</span>
-            <span className="flex h-12 w-12 items-center justify-center rounded-full bg-background transition-transform group-hover:rotate-[-45deg]">
-              <ArrowRight className="h-5 w-5 text-foreground" />
+            <span className="flex h-12 w-12 items-center justify-center rounded-full bg-white dark:bg-background transition-transform group-hover:rotate-[-45deg]">
+              <ArrowRight className="h-5 w-5 text-blue-600 dark:text-foreground" />
             </span>
           </a>
         </motion.div>
