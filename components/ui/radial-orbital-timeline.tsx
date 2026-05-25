@@ -142,19 +142,19 @@ export default function RadialOrbitalTimeline({
   const getStatusStyles = (status: TimelineItem["status"]): string => {
     switch (status) {
       case "completed":
-        return "text-white bg-black border-white";
+        return "text-orange-600 bg-white border-white font-bold";
       case "in-progress":
-        return "text-black bg-white border-black";
+        return "text-white bg-blue-500 border-blue-400";
       case "pending":
-        return "text-white bg-black/40 border-white/50";
+        return "text-white bg-white/20 border-white/30";
       default:
-        return "text-white bg-black/40 border-white/50";
+        return "text-white bg-white/20 border-white/30";
     }
   };
 
   return (
     <div
-      className="w-full min-h-[600px] flex flex-col items-center justify-center bg-transparent overflow-hidden"
+      className="w-full min-h-[600px] flex flex-col items-center justify-center bg-transparent"
       ref={containerRef}
       onClick={handleContainerClick}
     >
@@ -163,20 +163,23 @@ export default function RadialOrbitalTimeline({
           className="absolute w-full h-full flex items-center justify-center"
           ref={orbitRef}
           style={{
-            perspective: "1000px",
+            perspective: "1200px",
             transform: `translate(${centerOffset.x}px, ${centerOffset.y}px)`,
           }}
         >
-          <div className="absolute w-16 h-16 rounded-full bg-gradient-to-br from-purple-500 via-blue-500 to-teal-500 animate-pulse flex items-center justify-center z-10">
-            <div className="absolute w-20 h-20 rounded-full border border-white/20 animate-ping opacity-70"></div>
+          {/* Central Core - High Intensity for Orange Background */}
+          <div className="absolute w-16 h-16 rounded-full bg-white animate-orbital-pulse flex items-center justify-center z-10 shadow-[0_0_60px_rgba(255,255,255,0.6)]">
+            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white via-cyan-200 to-blue-300 opacity-80" />
+            <div className="absolute w-24 h-24 rounded-full border-2 border-white/50 animate-orbital-ping opacity-60"></div>
             <div
-              className="absolute w-24 h-24 rounded-full border border-white/10 animate-ping opacity-50"
+              className="absolute w-32 h-32 rounded-full border border-white/20 animate-orbital-ping opacity-30"
               style={{ animationDelay: "0.5s" }}
             ></div>
-            <div className="w-8 h-8 rounded-full bg-white/80 backdrop-blur-md"></div>
+            <div className="w-8 h-8 rounded-full bg-white z-20 shadow-xl border border-blue-100"></div>
           </div>
 
-          <div className="absolute w-96 h-96 rounded-full border border-white/10"></div>
+          {/* Orbital Ring - More Visible */}
+          <div className="absolute w-[400px] h-[400px] rounded-full border border-white/25 shadow-[inset_0_0_20px_rgba(255,255,255,0.1)]"></div>
 
           {timelineData.map((item, index) => {
             const position = calculateNodePosition(index, timelineData.length);
@@ -204,62 +207,70 @@ export default function RadialOrbitalTimeline({
                   toggleItem(item.id);
                 }}
               >
+                {/* Glow Aura */}
                 <div
-                  className={`absolute rounded-full -inset-1 ${
-                    isPulsing ? "animate-pulse duration-1000" : ""
+                  className={`absolute rounded-full -inset-4 ${
+                    isPulsing ? "animate-orbital-pulse duration-1000" : ""
                   }`}
                   style={{
-                    background: `radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%)`,
-                    width: `${item.energy * 0.5 + 40}px`,
-                    height: `${item.energy * 0.5 + 40}px`,
-                    left: `-${(item.energy * 0.5 + 40 - 40) / 2}px`,
-                    top: `-${(item.energy * 0.5 + 40 - 40) / 2}px`,
+                    background: `radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 70%)`,
+                    width: `${item.energy * 0.5 + 60}px`,
+                    height: `${item.energy * 0.5 + 60}px`,
+                    left: `-${(item.energy * 0.5 + 60 - 40) / 2}px`,
+                    top: `-${(item.energy * 0.5 + 60 - 40) / 2}px`,
                   }}
                 ></div>
 
+                {/* Node Circle */}
                 <div
                   className={`
-                  w-10 h-10 rounded-full flex items-center justify-center
+                  w-12 h-12 rounded-full flex items-center justify-center
                   ${
                     isExpanded
-                      ? "bg-white text-black"
+                      ? "bg-white text-orange-600 shadow-[0_0_30px_rgba(255,255,255,0.8)]"
                       : isRelated
-                      ? "bg-white/50 text-black"
-                      : "bg-black text-white"
+                      ? "bg-white/80 text-orange-600"
+                      : "bg-white/10 text-white backdrop-blur-md"
                   }
                   border-2 
                   ${
                     isExpanded
-                      ? "border-white shadow-lg shadow-white/30"
+                      ? "border-white"
                       : isRelated
-                      ? "border-white animate-pulse"
+                      ? "border-white animate-orbital-pulse"
                       : "border-white/40"
                   }
-                  transition-all duration-300 transform
+                  transition-all duration-300 transform hover:scale-110
                   ${isExpanded ? "scale-150" : ""}
                 `}
                 >
-                  <Icon size={16} />
+                  <Icon size={20} />
                 </div>
 
                 <div
                   className={`
-                  absolute top-12 left-1/2 -translate-x-1/2 whitespace-nowrap
-                  text-xs font-semibold tracking-wider
+                  absolute top-14 left-1/2 -translate-x-1/2 whitespace-nowrap
+                  text-[10px] font-bold tracking-[0.2em] uppercase
                   transition-all duration-300
-                  ${isExpanded ? "text-white scale-125" : "text-white/70"}
+                  ${isExpanded ? "text-white scale-110" : "text-white/60"}
                 `}
                 >
                   {item.title}
                 </div>
 
                 {isExpanded && (
-                  <Card className="absolute top-20 left-1/2 -translate-x-1/2 w-64 bg-black/90 backdrop-blur-lg border-white/30 shadow-xl shadow-white/10 overflow-visible">
+                  <Card className="absolute top-24 left-1/2 -translate-x-1/2 w-72 bg-white/15 backdrop-blur-2xl border border-white/30 shadow-2xl shadow-black/20 overflow-visible">
                     <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-px h-3 bg-white/50"></div>
-                    <CardHeader className="pb-2">
+                    {/* Mac-style Window Header for Consistency */}
+                    <div className="flex items-center gap-1.5 px-4 pt-3 pb-1 border-b border-white/10">
+                      <div className="w-2.5 h-2.5 rounded-full bg-[#ff5f56]"></div>
+                      <div className="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]"></div>
+                      <div className="w-2.5 h-2.5 rounded-full bg-[#27c93f]"></div>
+                    </div>
+                    <CardHeader className="pb-2 pt-4">
                       <div className="flex justify-between items-center">
                         <Badge
-                          className={`px-2 text-xs ${getStatusStyles(
+                          className={`px-2 py-0.5 text-[10px] rounded-sm ${getStatusStyles(
                             item.status
                           )}`}
                         >
@@ -269,28 +280,28 @@ export default function RadialOrbitalTimeline({
                             ? "IN PROGRESS"
                             : "PENDING"}
                         </Badge>
-                        <span className="text-xs font-mono text-white/50">
+                        <span className="text-[10px] font-mono text-white/50 uppercase tracking-widest">
                           {item.date}
                         </span>
                       </div>
-                      <CardTitle className="text-sm mt-2">
+                      <CardTitle className="text-lg mt-2 text-white font-bold">
                         {item.title}
                       </CardTitle>
                     </CardHeader>
-                    <CardContent className="text-xs text-white/80">
-                      <p>{item.content}</p>
+                    <CardContent className="text-xs text-white/90 leading-relaxed">
+                      <p className="mb-4">{item.content}</p>
 
-                      <div className="mt-4 pt-3 border-t border-white/10">
-                        <div className="flex justify-between items-center text-xs mb-1">
-                          <span className="flex items-center">
-                            <Zap size={10} className="mr-1" />
-                            Energy Level
+                      <div className="pt-3 border-t border-white/10">
+                        <div className="flex justify-between items-center text-[10px] mb-1.5 uppercase tracking-tighter">
+                          <span className="flex items-center font-medium">
+                            <Zap size={10} className="mr-1 text-cyan-300" />
+                            Intensity Level
                           </span>
-                          <span className="font-mono">{item.energy}%</span>
+                          <span className="font-mono text-cyan-300">{item.energy}%</span>
                         </div>
                         <div className="w-full h-1 bg-white/10 rounded-full overflow-hidden">
                           <div
-                            className="h-full bg-gradient-to-r from-blue-500 to-purple-500"
+                            className="h-full bg-gradient-to-r from-cyan-400 to-blue-500 shadow-[0_0_10px_rgba(34,211,238,0.5)]"
                             style={{ width: `${item.energy}%` }}
                           ></div>
                         </div>
@@ -300,11 +311,11 @@ export default function RadialOrbitalTimeline({
                         <div className="mt-4 pt-3 border-t border-white/10">
                           <div className="flex items-center mb-2">
                             <Link size={10} className="text-white/70 mr-1" />
-                            <h4 className="text-xs uppercase tracking-wider font-medium text-white/70">
-                              Connected Nodes
+                            <h4 className="text-[9px] uppercase tracking-[0.2em] font-bold text-white/50">
+                              Linked Domains
                             </h4>
                           </div>
-                          <div className="flex flex-wrap gap-1">
+                          <div className="flex flex-wrap gap-1.5">
                             {item.relatedIds.map((relatedId) => {
                               const relatedItem = timelineData.find(
                                 (i) => i.id === relatedId
@@ -314,7 +325,7 @@ export default function RadialOrbitalTimeline({
                                   key={relatedId}
                                   variant="outline"
                                   size="sm"
-                                  className="flex items-center h-6 px-2 py-0 text-xs rounded-none border-white/20 bg-transparent hover:bg-white/10 text-white/80 hover:text-white transition-all"
+                                  className="flex items-center h-7 px-3 py-0 text-[10px] rounded-full border-white/20 bg-white/5 hover:bg-white/20 text-white transition-all"
                                   onClick={(e) => {
                                     e.stopPropagation();
                                     toggleItem(relatedId);
@@ -323,7 +334,7 @@ export default function RadialOrbitalTimeline({
                                   {relatedItem?.title}
                                   <ArrowRight
                                     size={8}
-                                    className="ml-1 text-white/60"
+                                    className="ml-1 opacity-50"
                                   />
                                 </Button>
                               );

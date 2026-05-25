@@ -58,28 +58,36 @@ body {
 }
 
 /* Custom animations for the orbital timeline */
-@keyframes pulse-custom {
+@keyframes pulse-orbital {
   0%, 100% {
+    transform: scale(1);
     opacity: 1;
+    filter: brightness(1.2) blur(0px);
   }
   50% {
-    opacity: 0.5;
+    transform: scale(1.05);
+    opacity: 0.8;
+    filter: brightness(1.5) blur(2px);
   }
 }
 
-@keyframes ping-custom {
-  75%, 100% {
-    transform: scale(2);
+@keyframes ping-orbital {
+  0% {
+    transform: scale(0.8);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2.5);
     opacity: 0;
   }
 }
 
-.animate-pulse {
-  animation: pulse-custom 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+.animate-orbital-pulse {
+  animation: pulse-orbital 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
-.animate-ping {
-  animation: ping-custom 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+.animate-orbital-ping {
+  animation: ping-orbital 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
 
 .backdrop-blur-lg {

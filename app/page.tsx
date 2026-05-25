@@ -235,14 +235,14 @@ export default function Home() {
               </div>
             </section>
 
-            <section id="services" className="py-24 sm:py-32 relative">
+            <section id="services" className="py-24 sm:py-32 relative overflow-visible">
               <div className="container mx-auto px-6 max-w-7xl">
                 <div className="text-center mb-16 md:mb-24">
                   <h2 className="text-4xl md:text-5xl font-[family-name:var(--font-display)] font-bold tracking-tight mb-6 text-white">Our Capabilities</h2>
                   <p className="text-white/80 max-w-2xl mx-auto text-lg">We deliver end-to-end engineering excellence across the entire modern tech stack.</p>
                 </div>
                 
-                <div className="relative">
+                <div className="relative flex justify-center items-center scale-90 md:scale-100">
                   <RadialOrbitalTimeline timelineData={timelineData} />
                 </div>
               </div>
