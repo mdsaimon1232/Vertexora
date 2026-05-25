@@ -56,3 +56,32 @@ body {
 .animation-delay-2000 {
   animation-delay: 2s;
 }
+
+/* Custom animations for the orbital timeline */
+@keyframes pulse-custom {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes ping-custom {
+  75%, 100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+.animate-pulse {
+  animation: pulse-custom 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-ping {
+  animation: ping-custom 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.backdrop-blur-lg {
+  backdrop-filter: blur(16px);
+}

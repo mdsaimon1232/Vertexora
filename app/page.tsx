@@ -11,6 +11,76 @@ import {
 import Image from "next/image";
 import { Hero } from "@/components/hero";
 import { ProjectSection } from "@/components/project-section";
+import RadialOrbitalTimeline from "@/components/ui/radial-orbital-timeline";
+
+const timelineData = [
+  {
+    id: 1,
+    title: "Web Dev",
+    date: "Current",
+    content: "High-performance, beautifully designed marketing websites and complex SaaS applications.",
+    category: "Development",
+    icon: Code,
+    relatedIds: [2, 3],
+    status: "completed" as const,
+    energy: 95,
+  },
+  {
+    id: 2,
+    title: "Mobile Apps",
+    date: "Current",
+    content: "Native-feel iOS and Android applications developed for maximum user engagement.",
+    category: "Mobile",
+    icon: Smartphone,
+    relatedIds: [1, 4],
+    status: "completed" as const,
+    energy: 90,
+  },
+  {
+    id: 3,
+    title: "Backend",
+    date: "Current",
+    content: "Robust data architectures, RESTful APIs, and GraphQL endpoints built for scale.",
+    category: "Infrastructure",
+    icon: Server,
+    relatedIds: [1, 5],
+    status: "completed" as const,
+    energy: 85,
+  },
+  {
+    id: 4,
+    title: "Automation",
+    date: "Current",
+    content: "Intelligent workflow automations that digitize operations and save thousands of hours.",
+    category: "Efficiency",
+    icon: Zap,
+    relatedIds: [2, 6],
+    status: "in-progress" as const,
+    energy: 80,
+  },
+  {
+    id: 5,
+    title: "AI Layer",
+    date: "Current",
+    content: "Integrating LLMs, custom ML layers, and AI agents directly into your products.",
+    category: "AI",
+    icon: Cpu,
+    relatedIds: [3, 4],
+    status: "in-progress" as const,
+    energy: 75,
+  },
+  {
+    id: 6,
+    title: "Cloud Ops",
+    date: "Current",
+    content: "Optimized cloud deployment and infrastructure management for modern growth.",
+    category: "Infrastructure",
+    icon: Globe,
+    relatedIds: [5],
+    status: "pending" as const,
+    energy: 70,
+  },
+];
 
 // Counter component for stats
 function Counter({ value, suffix = "" }: { value: number, suffix?: string }) {
@@ -166,32 +236,8 @@ export default function Home() {
               <p className="text-gray-400 max-w-2xl mx-auto text-lg">We deliver end-to-end engineering excellence across the entire modern tech stack.</p>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {[
-                { icon: <Code className="w-8 h-8 text-[#00E5FF]" />, title: "Website Development", desc: "High-performance, beautifully designed marketing websites that convert visitors into customers." },
-                { icon: <Server className="w-8 h-8 text-indigo-400" />, title: "Web Applications", desc: "Scalable, secure, and complex SaaS and web apps built with Next.js and React." },
-                { icon: <Smartphone className="w-8 h-8 text-[#7C3AED]" />, title: "Mobile Apps", desc: "Native-feel iOS and Android applications developed for maximum user engagement." },
-                { icon: <Database className="w-8 h-8 text-[#00E5FF]" />, title: "Backend & APIs", desc: "Robust data architectures, RESTful APIs, and GraphQL endpoints built for scale." },
-                { icon: <Zap className="w-8 h-8 text-indigo-400" />, title: "Automation Systems", desc: "Intelligent workflow automations that digitize operations and save thousands of hours." },
-                { icon: <Cpu className="w-8 h-8 text-[#7C3AED]" />, title: "AI Solutions", desc: "Integrating LLMs, custom ML layers, and AI agents directly into your products." },
-              ].map((service, idx) => (
-                <motion.div 
-                  key={idx}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: idx * 0.1 }}
-                  whileHover={{ y: -5 }}
-                  className="glass-panel p-8 rounded-3xl group hover:bg-white/[0.05] transition-all cursor-pointer relative overflow-hidden"
-                >
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-bl-full -mr-8 -mt-8 transition-transform group-hover:scale-110" />
-                  <div className="mb-6 bg-white/[0.05] w-16 h-16 rounded-2xl flex items-center justify-center shrink-0 border border-white/10 group-hover:border-white/20 transition-colors relative z-10">
-                    {service.icon}
-                  </div>
-                  <h3 className="text-xl font-bold mb-3 font-[family-name:var(--font-display)] relative z-10">{service.title}</h3>
-                  <p className="text-gray-400 font-light leading-relaxed relative z-10">{service.desc}</p>
-                </motion.div>
-              ))}
+            <div className="relative">
+              <RadialOrbitalTimeline timelineData={timelineData} />
             </div>
           </div>
         </section>
